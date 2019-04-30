@@ -38,6 +38,11 @@ export const showCancelProperty = new Property<FilterableListpicker, boolean>({
   defaultValue: true,
   valueConverter: booleanConverter
 });
+export const cancelTextProperty = new Property<FilterableListpicker, string>({
+  name: "cancelText",
+  defaultValue: 'CANCEL',
+});
+
 export const dimmerColorProperty = new Property<FilterableListpicker, string>({
   name: "dimmerColor",
   defaultValue: "rgba(0,0,0,0.8)"
@@ -106,7 +111,7 @@ export class FilterableListpicker extends GridLayout {
                       </ListView.itemTemplate>
                   </ListView>
                   <StackLayout row="3" class="flp-cancel-container" visibility="{{showCancel ? 'visible' : 'collapsed'}}">
-                      <Button text="Cancel" tap="{{cancel}}" verticalAlignment="middle" class="flp-btn-cancel"></Button>
+                      <Button text="{{cancelText}}" tap="{{cancel}}" verticalAlignment="middle" class="flp-btn-cancel"></Button>
                   </StackLayout>
               </GridLayout>
           </GridLayout>`);
@@ -181,7 +186,7 @@ export class FilterableListpicker extends GridLayout {
           opacity: 0,
           duration: 200
         })
-        .then(_ => {}, err => {});
+        .then(_ => { }, err => { });
     }
 
     if (this.enableSearch) {
@@ -201,7 +206,7 @@ export class FilterableListpicker extends GridLayout {
           this.visibility = enums.Visibility.collapse;
           this._container.visibility = "collapse";
         },
-        err => {}
+        err => { }
       );
   }
 
@@ -242,7 +247,7 @@ export class FilterableListpicker extends GridLayout {
           opacity: 1,
           duration: 200
         })
-        .then(_ => {}, err => {});
+        .then(_ => { }, err => { });
     }
 
     this._picker.scaleX = 0.7;
@@ -255,7 +260,7 @@ export class FilterableListpicker extends GridLayout {
         duration: 400,
         curve: AnimationCurve.cubicBezier(0.1, 0.1, 0.1, 1)
       })
-      .then(_ => {}, err => {});
+      .then(_ => { }, err => { });
 
     if (this.enableSearch) {
       if (JSON.parse(this.focusOnShow)) this._textField.focus();
@@ -283,6 +288,7 @@ listHeightProperty.register(FilterableListpicker);
 headingTitleProperty.register(FilterableListpicker);
 enableSearchProperty.register(FilterableListpicker);
 showCancelProperty.register(FilterableListpicker);
+cancelTextProperty.register(FilterableListpicker);
 dimmerColorProperty.register(FilterableListpicker);
 focusOnShowProperty.register(FilterableListpicker);
 hideFilterProperty.register(FilterableListpicker);
