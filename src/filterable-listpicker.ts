@@ -153,7 +153,8 @@ export class FilterableListpicker extends GridLayout {
     this.notify({
       eventName: "itemTapped",
       object: this,
-      selectedItem: item
+      selectedItem: item,
+      index: args.index
     });
   }
 
