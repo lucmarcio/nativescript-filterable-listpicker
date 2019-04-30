@@ -8,6 +8,7 @@ export declare const blurProperty: Property<FilterableListpicker, string>;
 export declare const focusOnShowProperty: Property<FilterableListpicker, boolean>;
 export declare const hideFilterProperty: Property<FilterableListpicker, boolean>;
 export declare const hintTextProperty: Property<FilterableListpicker, string>;
+export declare const cancelTextProperty: Property<FilterableListpicker, string>;
 export declare const sourceProperty: Property<FilterableListpicker, ObservableArray<any>>;
 export declare class FilterableListpicker extends GridLayout {
     constructor();
@@ -16,6 +17,7 @@ export declare class FilterableListpicker extends GridLayout {
     source: any;
     dimmerColor: any;
     hintText: any;
+    cancelText: string;
     hideFilter: any;
     blur: any;
     enableSearch: boolean;
